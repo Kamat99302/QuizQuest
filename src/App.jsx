@@ -110,6 +110,10 @@ function App() {
 
   return (
     <div className='app'> 
+    <div className="bg-shape shape-1"></div>
+    <div className="bg-shape shape-2"></div>
+    <div className="bg-shape shape-3"></div>
+    <div className="bg-shape shape-4"></div>
       {<FaHome className='btn-home' onClick={backToMenu}/>}     
       {darkMode? <MdOutlineLightMode className="btn-mode" onClick={switchMode}/> : <MdDarkMode className="btn-mode" onClick={switchMode}/>}
       {quizStarted? <Quiz selectedAnswer={selectedAnswer} onSelectAnswer = {selectAnswer} questions={questions} quizCompleted={quizCompleted} darkMode={darkMode}/> : <StartScreen onDifficultyChange={setDifficulty} difficulty={difficulty} onQuestionsNumberChange={setquestionsNumber} questionsNumber={questionsNumber} onCategoryChange={setCategory} category={category} darkMode={darkMode} switchMode ={switchMode} handleClick = {getQuestions} /> }
