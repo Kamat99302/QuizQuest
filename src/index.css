@@ -75,6 +75,10 @@
   main span {
     z-index: 1000;
   }
+
+  body.dark-mode .quizz p {
+    color: white;
+  }
   
   
   /* ============================================
@@ -98,7 +102,6 @@
     font-weight: 500;
     font-family: inherit;
     cursor: pointer;
-    transition: border-color 0.25s;
   }
   
   
@@ -107,14 +110,13 @@
      ============================================ */
   
   .quizz p {
-    font-family: 'karla';
-    font-weight: bold;
+    font-family: 'Poppins';
+    font-weight: 600;
+    color: black;
     font-size: 1.5em;
   }
+
   
-  .quizz.dark-mode-characters p {
-    color: white;
-  }
   
   .quizz-button-section {
     display: flex;
@@ -124,10 +126,10 @@
   }
   
   .quizz button {
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 0.8em 2em;
     background-color: white;
-    border: 2px solid #4D5B9E;
+    border: 2px solid skyblue;
     font-family: 'inter';
     font-weight: 500;
     color: #293264;
@@ -136,15 +138,16 @@
   
   /* États des boutons de réponse */
   .quizz button.correct-answer {
-    background-color: green;
+    background-color: rgb(29, 204, 29);
   }
   
   .quizz button.selected {
-    background-color: #D6DBF5;
+    background-color: #485ED1;
+    color: white;
   }
   
   .quizz button.wrong-answer {
-    background-color: red;
+    background-color: rgb(252, 0, 0);
   }
   
   
@@ -153,38 +156,48 @@
      ============================================ */
   
   .check-answers-btn {
-    border-radius: 15px;
+    border-radius: 20px;
     border: 1px solid transparent;
     margin-top: 2rem;
-    padding: 1em 2.5em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
+    padding: 1.2em 3.2em;
+    font-size: 1.1em;
+    font-weight: bold;
     background-color: #4D5B9E;
     cursor: pointer;
-    transition: border-color 0.25s;
+    font-family: 'inter';
   }
   
   .new-game-btn {
-    border-radius: 15px;
+    border-radius: 20px;
     border: 1px solid transparent;
-    padding: 1em 2.5em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
+    padding: 1.2em 3.2em;
+    font-size: 1.1em;
+    font-weight: bold;
     background-color: #4D5B9E;
     cursor: pointer;
-    transition: border-color 0.25s;
+    font-family: 'inter';
+
   }
   
   /* Effets hover */
+
+
+  .quizz button,
+  .check-answers-btn,
+  .start-screen button,
+  .new-game-btn,
+  .btn-mode,
+  .btn-home {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
   .quizz button:hover,
   .check-answers-btn:hover,
   .start-screen button:hover,
   .new-game-btn:hover,
   .btn-mode:hover,
   .btn-home:hover {
-    transform: scale(1.1);
+    transform: translateY(-4px) scale(1.05);
   }
   
   
@@ -198,12 +211,17 @@
     align-items: center;
     margin-top: 2em;
     gap: 1em;
+    color: black;
   }
   
   .bottom-el p {
-    font-family: 'karla';
+    padding: .4em .6em;
+    border-radius: 15px;
+    background-color: orange;
+    border: 2px solid white;
+    font-family: 'inter';
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
   
   

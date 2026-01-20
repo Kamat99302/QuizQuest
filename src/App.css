@@ -16,9 +16,18 @@
     overflow-x: hidden;
   }
   
-  body.dark-mode {
+  body.dark-mode{
     background: #313338;
     color: white;
+  }
+
+  body.dark-mode main h1,
+  body.dark-mode main p {
+  color: white;
+}
+
+  body.dark-mode .difficulty-section label{
+    color: black;
   }
   
   

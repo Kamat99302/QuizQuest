@@ -40,7 +40,6 @@ function App() {
 
   function switchMode(){
     setDarkMode(prevMode =>!prevMode)
-    console.log(darkMode)
   }
 
   function backToMenu(){
