@@ -4,6 +4,7 @@
 
    * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Enlève le highlight au tap sur mobile */
   }
   
   :root {
