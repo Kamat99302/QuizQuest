@@ -1,7 +1,19 @@
 import Question from "./question"
-export default function Quiz({questions, onSelectAnswer, quizCompleted, selectedAnswer, incorrect_answers, darkMode}){
+export default function Quiz({
+    questions,
+    onSelectAnswer,
+    quizCompleted, 
+    selectedAnswer, 
+    incorrect_answers, 
+    darkMode
+})  {
+
     return (
-        <section className="questions">
+        <section 
+            className="questions"
+            aria-label="Quiz questions"
+            role="region"
+        >
             <div>
                 {questions.map((item, index)=>{
                     //création d'un nouvel array qui contient les mauvaises réponses ainsi que la bonne réponse

@@ -103,24 +103,69 @@ function App() {
         })
         setQuestions(decodedData)
         setQuizstarted(true)
-    
+  })
+  .catch(error =>{
+    console.error("Error fetching questions:", error)
+    alert("Network error. Please check your connection.")
   })
   }
 
   return (
     <div className='app'> 
-    <div className="bg-shape shape-1"></div>
-    <div className="bg-shape shape-2"></div>
-    <div className="bg-shape shape-3"></div>
-    <div className="bg-shape shape-4"></div>
-      {<FaHome className='btn-home' onClick={backToMenu}/>}     
-      {darkMode? <MdOutlineLightMode className="btn-mode" onClick={switchMode}/> : <MdDarkMode className="btn-mode" onClick={switchMode}/>}
+    <div className="bg-shape shape-1" aria-hidden="true"></div>
+    <div className="bg-shape shape-2" aria-hidden="true"></div>
+    <div className="bg-shape shape-3" aria-hidden="true"></div>
+    <div className="bg-shape shape-4" aria-hidden="true"></div>
+    <FaHome 
+      className='btn-home' 
+      onClick={backToMenu}
+      role='button'
+      aria-label='Return to home menu'
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && backToMenu()}/> {/*Permet d'utiliser Enter au clavier*/}
+
+    {darkMode?
+    <MdOutlineLightMode 
+      className="btn-mode" 
+      onClick={switchMode}
+      role='button'
+      aria-label='Switch to light mode'
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && switchMode()}
+      /> : 
+    <MdDarkMode 
+      className="btn-mode" 
+      onClick={switchMode}
+      role='button'
+      aria-label='Switch to dark mode'
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && switchMode()}
+      />
+      }
+
       {quizStarted? <Quiz selectedAnswer={selectedAnswer} onSelectAnswer = {selectAnswer} questions={questions} quizCompleted={quizCompleted} darkMode={darkMode}/> : <StartScreen onDifficultyChange={setDifficulty} difficulty={difficulty} onQuestionsNumberChange={setquestionsNumber} questionsNumber={questionsNumber} onCategoryChange={setCategory} category={category} darkMode={darkMode} switchMode ={switchMode} handleClick = {getQuestions} /> }
-      {(quizStarted && !quizCompleted) && <button onClick={calculateScore} className='check-answers-btn'>Check answers</button>}
+      {(quizStarted && !quizCompleted) &&
+       <button 
+        onClick={calculateScore}
+        className='check-answers-btn'
+        aria-label='Check your answers and see your score'
+        >
+          Check answers
+        </button>
+        }
+
       {quizCompleted && ( 
-        <div className='bottom-el'>
-          <p>You scored {score}/{questionsNumber}</p>
-          <button onClick={startNewGame} className='new-game-btn'>New game</button>
+        <div className='bottom-el' role='region' aria-live='polite'>
+          <p aria-label={`You scored ${score} out of ${questionsNumber}`}>
+            You scored {score}/{questionsNumber}
+          </p>
+          <button 
+            onClick={startNewGame} 
+            className='new-game-btn'
+            aria-label='Start a new quiz game'
+            >
+              New game
+            </button>
         </div>)}
     </div> 
   )
