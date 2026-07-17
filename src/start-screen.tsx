@@ -1,4 +1,5 @@
 import { FaPlay } from "react-icons/fa";
+import type { CategoryType, DifficultyType, QuestionsNumberType, StartScreenProps } from "./types";
 
 import { IoSparklesOutline } from "react-icons/io5";
 
@@ -10,7 +11,7 @@ export default function StartScreen({
     onQuestionsNumberChange,
     category,
     onCategoryChange
-})  {
+}: StartScreenProps)  {
 
     return (
         <main>
@@ -30,7 +31,7 @@ export default function StartScreen({
                     <select 
                         id="choose-difficulty"
                         value={difficulty} 
-                        onChange={(e)=> onDifficultyChange(e.target.value)}
+                        onChange={(e)=> onDifficultyChange(e.target.value as DifficultyType)}
                         aria-label="Select quiz difficulty level" 
                         > 
                         <option value="easy">Easy</option>
@@ -43,7 +44,7 @@ export default function StartScreen({
                     <select
                         id="choose-numberOf-questions"
                         value={questionsNumber}
-                        onChange={(e)=> onQuestionsNumberChange(e.target.value)}
+                        onChange={(e)=> onQuestionsNumberChange(Number(e.target.value) as QuestionsNumberType)}
                         aria-label="Select number of questions"
                     > 
                         <option value={5}>5</option>
@@ -52,11 +53,11 @@ export default function StartScreen({
                     </select>
 
                     {/*Sélécteur de catégorie*/}
-                    <label Htmlfor="choose-category">Category</label>
+                    <label htmlFor="choose-category">Category</label>
                     <select
                         id="choose-category"
                         value={category}
-                        onChange={(e)=> onCategoryChange(e.target.value)}
+                        onChange={(e)=> onCategoryChange(Number(e.target.value) as CategoryType)}
                         aria-label="Select quiz category"
                     > 
                         <option value={0}>Select category</option>
