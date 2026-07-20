@@ -1,12 +1,12 @@
 import Question from "./question"
+import type { Quiz } from "./types"
+
 export default function Quiz({
     questions,
     onSelectAnswer,
     quizCompleted, 
-    selectedAnswer, 
-    incorrect_answers, 
-    darkMode
-})  {
+    selectedAnswer
+}: Quiz)  {
 
     return (
         <section 
@@ -27,7 +27,6 @@ export default function Quiz({
                         correctAnswer = {item.correct_answer}
                         quizCompleted = {quizCompleted}
                         selectedAnswer = {selectedAnswer}
-                        darkMode={darkMode} 
                     />
                 )}
             )}

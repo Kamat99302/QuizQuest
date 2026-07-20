@@ -1,4 +1,7 @@
-export default function Question({question, allAnswers, onSelectAnswer, index, quizCompleted, correctAnswer, selectedAnswer}){
+import type { QuestionProps } from "./types"
+
+
+export default function Question({question, allAnswers, onSelectAnswer, index, quizCompleted, correctAnswer, selectedAnswer}: QuestionProps){
     return(
         <fieldset className="quizz">
             <p>{question}</p>
@@ -18,6 +21,7 @@ export default function Question({question, allAnswers, onSelectAnswer, index, q
                         key={item}
                     >
                         {item}
+      
                     </button>
                 ))}
             </div>

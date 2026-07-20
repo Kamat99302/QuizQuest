@@ -7,17 +7,23 @@ import { MdDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 
+import type { DifficultyType } from './types'
+import type { SelectedAnswers } from './types'
+import type { QuestionData } from './types'
+import type { QuestionsNumberType } from './types'
+import type { CategoryType } from './types'
+
 function App() {
   //states values
-  const [questions, setQuestions] = useState([])
+  const [questions, setQuestions] = useState<QuestionData[]>([])
   const [quizStarted, setQuizstarted] = useState(false)
-  const [selectedAnswer, setSelectedAnswer] = useState({})
+  const [selectedAnswer, setSelectedAnswer] = useState<SelectedAnswers>({})
   const [score, setScore] = useState(0)
   const [quizCompleted, setQuizCompleted] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
-  const [difficulty, setDifficulty] = useState("easy")
-  const [questionsNumber, setquestionsNumber] = useState(5)
-  const [category, setCategory] = useState(0)
+  const [difficulty, setDifficulty] = useState<DifficultyType>("easy")
+  const [questionsNumber, setquestionsNumber] = useState<QuestionsNumberType>(5)
+  const [category, setCategory] = useState<CategoryType>(0)
 
 
   useEffect(()=>{
@@ -31,7 +37,7 @@ function App() {
 
   //stockage des réponses selectionnées par l'utilisateur
   //utilise l'index de la question comme clé dans l'objet selectedAnswer
-  function selectAnswer(index, answer){
+  function selectAnswer(index:number, answer:string){
     setSelectedAnswer({
       ...selectedAnswer,
       [index]: answer
@@ -69,7 +75,7 @@ function App() {
      }
      //calcul du score en fonction des réponses de l'utilisateur
     questions.forEach((question,index)=>{
-      if (question.correct_answer=== selectedAnswer[index]){
+      if (question.correct_answer === selectedAnswer[index]){
         scoreCalculated++
       }
     })
@@ -90,7 +96,7 @@ function App() {
       .then(answer=>answer.json())
       .then(data=>{
         //creation d'une variable pour décoder les données renvoyées par l'API
-        let decodedData = data.results.map(item => {
+        let decodedData = data.results.map((item: QuestionData) => {
           const decodedIncorrect = item.incorrect_answers.map(answer => decode(answer));
           const decodedCorrect = decode(item.correct_answer);
           return {
