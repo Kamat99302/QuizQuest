@@ -21,8 +21,9 @@ Application de quiz interactive développée en React. Utilise l'API Open Trivia
 ## 🛠️ Technologies
 
 - React 19
-- Vite
+- TypeScript
 - CSS3 (animations, flexbox, media queries)
+- Vite
 - Open Trivia DB API
 - he (décodage HTML)
 - React Icons
